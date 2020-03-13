@@ -1,51 +1,41 @@
 package homeWork5;
 
-import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public class ObjectBox{
+    public Set<Object> set = new LinkedHashSet<>();
 
-    private ArrayList<Object> objList;
-
-    ObjectBox(ArrayList<Object> objList) {
-        this.objList = objList;
+    /**
+     *
+     * @param o - Метод для добавление объекта
+     */
+    public void addObject(Object o)
+    {
+        set.add(o);
     }
 
-    public ArrayList<Object> getObjList() {
-        return objList;
+    /**
+     *
+     * @param o - Метод для удаление объекта
+     */
+    public void deleteObject(Object o)
+    {
+        set.remove(o);
     }
 
-    public ArrayList<Object> addObject(Object obj) {
-        objList.add(obj);
-        return objList;
-    }
-
-    public ArrayList<Object> removeObject(Object obj) {
-        for (int i = 0; i < objList.size(); i ++) {
-            if (objList.get(i).equals(obj)) {
-                objList.remove(i);
-            }
-        }
-        return objList;
-    }
-
-    public StringBuilder dump() {
-        StringBuilder sb = new StringBuilder();
-        for (Object s : objList)
+    /**
+     *
+     * @return возвращаем строку из объектов
+     */
+    public String dump()
+    {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Object number: set)
         {
-            sb.append(s);
-            sb.append("\t");
+            stringBuilder.append(number.toString());
+            stringBuilder.append(" ");
         }
-        return sb;
-    }
-
-
-    public static void main(String[] args) {
-        ArrayList<Object> objList1 = new ArrayList<>();
-        objList1.add(1);
-        objList1.add(2);
-        objList1.add(3);
-        ObjectBox objBox = new ObjectBox(objList1);
-
-        objBox.getObjList();
+        return stringBuilder.toString();
     }
 }
