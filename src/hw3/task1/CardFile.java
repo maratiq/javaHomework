@@ -72,7 +72,11 @@ public class CardFile implements Comparable<Animal> {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        cardFile.add(new Animal(id, name, new Person(ownerName, ownerSex, ownerAge), weight));
+        if (search(name) != null) {
+            System.out.println("Такое животное уже есть в каталоге");
+        } else {
+            cardFile.add(new Animal(id, name, new Person(ownerName, ownerSex, ownerAge), weight));
+        }
     }
 
     public void changeData(int animalId) {
